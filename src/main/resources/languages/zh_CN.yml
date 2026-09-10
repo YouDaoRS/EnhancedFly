@@ -1,0 +1,125 @@
+# EnhancedFly 中文语言文件
+# 语言代码: zh_CN
+
+# 成就名称和描述
+achievement:
+  first_flight:
+    name: "&e&l初次翱翔"
+    description: "&7第一次使用飞行功能"
+  fly_1hour:
+    name: "&b&l天空新手"
+    description: "&7累计飞行1小时"
+  fly_10hours:
+    name: "&d&l飞行达人"
+    description: "&7累计飞行10小时"
+  fly_100hours:
+    name: "&6&l天空主宰"
+    description: "&7累计飞行100小时"
+  fly_1000blocks:
+    name: "&a&l短途旅行者"
+    description: "&7累计飞行1000方块"
+  fly_10000blocks:
+    name: "&b&l长途探险家"
+    description: "&7累计飞行10000方块"
+  fly_100000blocks:
+    name: "&5&l环球飞行家"
+    description: "&7累计飞行100000方块"
+  first_purchase:
+    name: "&e&l初次购买"
+    description: "&7第一次在商店购买飞行时间"
+  big_spender:
+    name: "&6&l挥金如土"
+    description: "&7在商店购买10次飞行"
+  permanent_flyer:
+    name: "&d&l永恒之翼"
+    description: "&7获得永久飞行能力"
+  sky_explorer:
+    name: "&b&l天空探索者"
+    description: "&7飞到海拔200米以上"
+  
+  unlocked: "&a&l✓ 成就解锁！"
+  title: "&6&l★ 成就达成 ★"
+  broadcast: "&e&l{player} &6解锁了成就 &e&l{achievement}&6！"
+
+# GUI界面文本
+gui:
+  shop:
+    title: "&6&l✈ 飞行商店 &7({page}/{total})"
+    next_page: "&a下一页 →"
+    previous_page: "&a← 上一页"
+    achievements:
+      name: "&d&l我的成就"
+      progress: "&7进度: &e{unlocked}&7/&e{total}"
+      click: "&e点击查看所有成就"
+    player_info_title: "&b&l{player}的信息"
+    player_info:
+      permanent: "&a✓ 拥有永久飞行"
+      temporary: "&e剩余时间: {time}"
+      no_fly: "&c暂无飞行权限"
+      balance: "&a余额: &e{balance} 金币"
+    info:
+      name: "&b&l商店说明"
+      lore:
+        1: "&7欢迎来到飞行商店！"
+        2: "&7在这里你可以购买飞行能力"
+        3: ""
+        4: "&e永久飞行 &7- 一次购买，永久使用"
+        5: "&e临时飞行 &7- 购买指定时长的飞行"
+        6: ""
+        7: "&7使用 &e/fly &7来切换飞行模式"
+        8: "&7飞行时按住 &eShift &7可以下降"
+        9: "&7飞行时可以使用 &e/flyspeed &7调整速度"
+        10: ""
+
+  achievements:
+    title: "&d&l★ 成就系统 &7({page}/{total})"
+    unlocked: "&a&l✓ 已解锁"
+    locked: "&7✗ 未解锁"
+    requirement: "&7需要: &e{value}"
+    back: "&c返回商店"
+    progress_title: "&e&l完成进度"
+    progress_detail: "&7已解锁: &a{unlocked}&7/&e{total} &7(&6{percentage}%&7)"
+
+# 时间单位
+time:
+  seconds: "秒"
+  minutes: "分钟"
+  hours: "小时"
+  days: "天"
+
+# 错误消息
+error:
+  economy_disabled: "&c经济系统未启用！"
+  database_error: "&c数据库错误，请联系管理员"
+  no_permission_speed: "&c你没有权限调整飞行速度！"
+  invalid_speed: "&c无效的速度值！请使用1-10之间的数字"
+  world_disabled_fly: "&c此世界禁止使用飞行！"
+
+# 商店消息
+shop:
+  player_limit_reached: "&c你今日已达到 {item} &c的购买上限 ({limit}张)！"
+  server_limit_reached: "&c{item} &c今日全服购买量已达上限 ({limit}张)！"
+  
+# 命令消息
+command:
+  flyshop:
+    usage: "&c用法: /flyshop"
+    description: "打开飞行商店"
+  fly:
+    usage: "&c用法: /fly [player]"
+    description: "切换飞行模式"
+    speed:
+      set: "&a飞行速度已设置为 &e{speed}"
+      usage: "&c用法: /flyspeed <1-10>"
+  flyadmin:
+    usage: "&c用法: /flyadmin <give|remove|reload|stats> [player] [args]"
+    reload_success: "&a配置文件已重新加载！"
+    give_success: "&a已给予 &e{player} &a{type}飞行权限"
+    remove_success: "&a已移除 &e{player} &a的飞行权限"
+    stats_header: "&6===== &e{player}的飞行统计 &6====="
+    stats_permanent: "&7永久飞行: {status}"
+    stats_temp_time: "&7临时飞行时间: &e{time}"
+    stats_total_fly_time: "&7总飞行时间: &e{time}"
+    stats_total_distance: "&7总飞行距离: &e{distance} 方块"
+    stats_purchases: "&7购买次数: &e{count}"
+    stats_achievements: "&7成就进度: &e{unlocked}&7/&a{total}"

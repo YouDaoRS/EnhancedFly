@@ -1,0 +1,125 @@
+# EnhancedFly English Language File
+# Language Code: en_US
+
+# Achievement Names and Descriptions
+achievement:
+  first_flight:
+    name: "&e&lFirst Flight"
+    description: "&7Use fly ability for the first time"
+  fly_1hour:
+    name: "&b&lSky Rookie"
+    description: "&7Fly for a total of 1 hour"
+  fly_10hours:
+    name: "&d&lFlight Master"
+    description: "&7Fly for a total of 10 hours"
+  fly_100hours:
+    name: "&6&lSky Dominator"
+    description: "&7Fly for a total of 100 hours"
+  fly_1000blocks:
+    name: "&a&lShort Trip"
+    description: "&7Fly a total of 1000 blocks"
+  fly_10000blocks:
+    name: "&b&lLong Journey"
+    description: "&7Fly a total of 10000 blocks"
+  fly_100000blocks:
+    name: "&5&lGlobal Explorer"
+    description: "&7Fly a total of 100000 blocks"
+  first_purchase:
+    name: "&e&lFirst Purchase"
+    description: "&7Make your first purchase in the shop"
+  big_spender:
+    name: "&6&lBig Spender"
+    description: "&7Purchase fly time 10 times"
+  permanent_flyer:
+    name: "&d&lEternal Wings"
+    description: "&7Obtain permanent fly ability"
+  sky_explorer:
+    name: "&b&lSky Explorer"
+    description: "&7Fly above 200 blocks height"
+  
+  unlocked: "&a&l✓ Achievement Unlocked!"
+  title: "&6&l★ Achievement ★"
+  broadcast: "&e&l{player} &6unlocked achievement &e&l{achievement}&6!"
+
+# GUI Text
+gui:
+  shop:
+    title: "&6&l✈ Fly Shop &7({page}/{total})"
+    next_page: "&aNext Page →"
+    previous_page: "&a← Previous Page"
+    achievements:
+      name: "&d&lMy Achievements"
+      progress: "&7Progress: &e{unlocked}&7/&e{total}"
+      click: "&eClick to view all achievements"
+    player_info_title: "&b&l{player}'s Info"
+    player_info:
+      permanent: "&a✓ Has Permanent Fly"
+      temporary: "&eRemaining: {time}"
+      no_fly: "&cNo Fly Permission"
+      balance: "&aBalance: &e{balance} coins"
+    info:
+      name: "&b&lShop Information"
+      lore:
+        1: "&7Welcome to the Fly Shop!"
+        2: "&7Here you can purchase fly abilities"
+        3: ""
+        4: "&ePermanent Fly &7- Buy once, use forever"
+        5: "&eTemporary Fly &7- Purchase for specific duration"
+        6: ""
+        7: "&7Use &e/fly &7to toggle fly mode"
+        8: "&7Hold &eShift &7while flying to descend"
+        9: "&7Use &e/flyspeed &7to adjust speed"
+        10: ""
+
+  achievements:
+    title: "&d&l★ Achievements &7({page}/{total})"
+    unlocked: "&a&l✓ Unlocked"
+    locked: "&7✗ Locked"
+    requirement: "&7Required: &e{value}"
+    back: "&cBack to Shop"
+    progress_title: "&e&lCompletion Progress"
+    progress_detail: "&7Unlocked: &a{unlocked}&7/&e{total} &7(&6{percentage}%&7)"
+
+# Time Units
+time:
+  seconds: "s"
+  minutes: "m"
+  hours: "h"
+  days: "d"
+
+# Error Messages
+error:
+  economy_disabled: "&cEconomy system is disabled!"
+  database_error: "&cDatabase error, please contact admin"
+  no_permission_speed: "&cYou don't have permission to adjust fly speed!"
+  invalid_speed: "&cInvalid speed value! Use numbers between 1-10"
+  world_disabled_fly: "&cFly is disabled in this world!"
+
+# Shop Messages
+shop:
+  player_limit_reached: "&cYou've reached the daily purchase limit for {item} &c({limit} items)!"
+  server_limit_reached: "&c{item} &chas reached the server-wide daily limit ({limit} items)!"
+  
+# Command Messages
+command:
+  flyshop:
+    usage: "&cUsage: /flyshop"
+    description: "Open the fly shop"
+  fly:
+    usage: "&cUsage: /fly [player]"
+    description: "Toggle fly mode"
+    speed:
+      set: "&aFly speed set to &e{speed}"
+      usage: "&cUsage: /flyspeed <1-10>"
+  flyadmin:
+    usage: "&cUsage: /flyadmin <give|remove|reload|stats> [player] [args]"
+    reload_success: "&aConfiguration reloaded!"
+    give_success: "&aGave &e{player} &a{type} fly permission"
+    remove_success: "&aRemoved &e{player}'s &afly permission"
+    stats_header: "&6===== &e{player}'s Fly Statistics &6====="
+    stats_permanent: "&7Permanent Fly: {status}"
+    stats_temp_time: "&7Temporary Fly Time: &e{time}"
+    stats_total_fly_time: "&7Total Fly Time: &e{time}"
+    stats_total_distance: "&7Total Distance: &e{distance} blocks"
+    stats_purchases: "&7Purchases: &e{count}"
+    stats_achievements: "&7Achievements: &e{unlocked}&7/&a{total}"

@@ -1,0 +1,254 @@
+# EnhancedFly 配置文件
+# 作者: YourName
+# 版本: 2.1.0
+
+# 语言设置 (zh_CN 或 en_US)
+language: zh_CN
+
+# 数据库设置
+# 优先级: MySQL > SQLite > 本地文件
+# 只能同时启用一种数据库
+database:
+  # MySQL数据库配置（推荐用于大型服务器）
+  mysql:
+    enabled: false
+    host: localhost
+    port: 3306
+    database: enhancedfly
+    username: root
+    password: password
+    use-ssl: false
+    # 连接池设置
+    pool-size: 10
+    minimum-idle: 2
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+  
+  # SQLite数据库配置（推荐用于中小型服务器）
+  # SQLite 是轻量级的本地数据库，无需额外安装数据库服务器
+  # 数据文件存储在 plugins/EnhancedFly/playerdata.db
+  sqlite:
+    enabled: true  # 默认启用SQLite
+    # SQLite会自动优化性能，无需额外配置
+
+# 世界飞行设置
+worlds:
+  # 启用飞行的世界列表
+  enabled-worlds:
+    - world
+    - world_nether
+    - world_the_end
+  # 是否使用白名单模式（true=只有列表中的世界可以飞行，false=列表中的世界不能飞行）
+  whitelist-mode: true
+  # 兼容旧配置；进入禁飞世界始终撤销本插件提供的飞行
+  disable-on-world-change: true
+
+# 飞行商店设置
+shop:
+  # 是否启用飞行商店
+  enabled: true
+  # 商店物品配置
+  items:
+    temporary-7d:
+      # 20秒飞行 - 体验卷轴（放在第一个位置）
+      enabled: true
+      price: 800.0
+      duration: 20  # 秒
+      display-name: '&d&l20秒飞行'
+      lore:
+        - '&7购买后获得20秒的飞行时间'
+        - '&7只在实际飞行时消耗'
+        - ''
+        - '&a价格: &e{price} 金币'
+        - '&a时长: &e20秒'
+        - '&5体验用!'
+        - ''
+        - '&c每人每日限购: &e5张'
+        - '&c全服每日限购: &e20张'
+        - '&e点击购买'
+      material: FEATHER
+      slot: 10
+      # 每日限购配置
+      daily_limit:
+        player: 5  # 每人每日限购5张
+        server: 20  # 全服每日限购20张
+    
+    temporary-1h:
+      # 60秒飞行
+      enabled: true
+      price: 10000.0
+      duration: 60  # 秒
+      display-name: '&e&l60秒飞行'
+      lore:
+        - '&7购买后获得60秒的飞行时间'
+        - '&7只在实际飞行时消耗'
+        - ''
+        - '&a价格: &e{price} 金币'
+        - '&a时长: &e60秒'
+        - ''
+        - '&c每人每日限购: &e10张'
+        - '&c全服每日限购: &e50张'
+        - '&e点击购买'
+      material: FEATHER
+      slot: 11
+      daily_limit:
+        player: 10
+        server: 50
+    
+    temporary-6h:
+      # 3分钟飞行
+      enabled: true
+      price: 40000.0
+      duration: 180  # 秒
+      display-name: '&e&l3分钟飞行'
+      lore:
+        - '&7购买后获得3分钟的飞行时间'
+        - '&7只在实际飞行时消耗'
+        - ''
+        - '&a价格: &e{price} 金币'
+        - '&a时长: &e3分钟'
+        - '&b性价比更高!'
+        - ''
+        - '&c每人每日限购: &e8张'
+        - '&c全服每日限购: &e30张'
+        - '&e点击购买'
+      material: FEATHER
+      slot: 12
+      daily_limit:
+        player: 8
+        server: 30
+    
+    permanent:
+      # 永久飞行
+      enabled: true
+      price: 5000000000000000.0
+      display-name: '&6&l永久飞行'
+      lore:
+        - '&7购买后永久拥有飞行能力'
+        - '&7可以随时使用 &e/fly &7切换飞行'
+        - ''
+        - '&a价格: &e{price} 金币'
+        - ''
+        - '&c每人每日限购: &e1张'
+        - '&c全服每日限购: &e3张'
+        - '&e点击购买'
+      material: ELYTRA
+      slot: 13
+      daily_limit:
+        player: 1
+        server: 3
+    
+    temporary-24h:
+      # 10分钟飞行
+      enabled: true
+      price: 80000.0
+      duration: 600  # 秒
+      display-name: '&e&l10分钟飞行'
+      lore:
+        - '&7购买后获得10分钟的飞行时间'
+        - '&7只在实际飞行时消耗'
+        - ''
+        - '&a价格: &e{price} 金币'
+        - '&a时长: &e10分钟'
+        - '&d超值推荐!'
+        - ''
+        - '&c每人每日限购: &e5张'
+        - '&c全服每日限购: &e20张'
+        - '&e点击购买'
+      material: FEATHER
+      slot: 14
+      daily_limit:
+        player: 5
+        server: 20
+
+# 成就系统设置
+achievements:
+  # 是否启用成就系统
+  enabled: true
+  # 成就通知设置
+  notifications:
+    # 是否显示标题通知
+    show-title: true
+    # 是否播放音效
+    play-sound: true
+    # 是否广播重要成就
+    broadcast-important: true
+
+# 飞行效果设置
+effects:
+  # 飞行时是否显示粒子效果
+  particles:
+    enabled: true
+    type: CLOUD  # 粒子类型: CLOUD, HEART, FLAME, PORTAL, etc.
+    amount: 3
+  # 飞行速度（1.0 = 正常，可配置范围0.1到10.0）
+  speed: 1.0
+  # 是否允许玩家调整飞行速度
+  allow-speed-change: true
+  # 最小速度
+  min-speed: 1
+  # 最大速度
+  max-speed: 10
+
+# 经济设置
+economy:
+  # 是否启用经济系统（需要Vault）
+  enabled: true
+  # 货币符号
+  currency-symbol: '金币'
+
+# 统计追踪设置
+statistics:
+  # 是否启用统计追踪
+  enabled: true
+  # 是否追踪飞行距离
+  track-distance: true
+  # 是否追踪飞行高度
+  track-altitude: true
+  # 统计保存间隔（秒）
+  save-interval: 300
+
+# 其他设置
+settings:
+  # 玩家退出时是否保存飞行状态
+  save-fly-state-on-quit: false
+  # 玩家登录时是否恢复飞行状态
+  restore-fly-state-on-join: false
+  # 兼容旧配置；安全计时现在固定每 tick 检查，按实际经过时间扣费
+  time-check-interval: 1
+  # 是否在玩家飞行时显示动作栏提示
+  actionbar-enabled: true
+  # 动作栏更新间隔（tick，20tick=1秒）
+  actionbar-update-interval: 20
+  # 是否在玩家加入时检查成就
+  check-achievements-on-join: true
+
+# 消息设置
+messages:
+  prefix: '&6[飞行] &r'
+  fly-enabled: '&a飞行模式已启用！'
+  fly-disabled: '&c飞行模式已禁用！'
+  fly-enabled-other: '&a已为 &e{player} &a启用飞行！'
+  fly-disabled-other: '&c已为 &e{player} &c禁用飞行！'
+  no-permission: '&c你没有权限执行此操作！'
+  player-not-found: '&c找不到玩家: {player}'
+  not-enough-money: '&c余额不足！需要 &e{price} {currency}'
+  purchase-success: '&a购买成功！{item}'
+  already-have-permanent: '&c你已经拥有永久飞行了！'
+  world-disabled: '&c此世界禁止飞行！'
+  time-remaining: '&e剩余飞行时间: &a{time}'
+  time-expired: '&c你的飞行时间已用完！'
+  config-reloaded: '&a配置文件已重新加载！'
+  fly-given: '&a已给予 &e{player} &a{type}飞行！'
+  fly-removed: '&c已移除 &e{player} &c的飞行权限！'
+  actionbar-permanent: '&a飞行模式 &7| &e永久'
+  actionbar-temporary: '&a飞行模式 &7| &e剩余: {time}'
+  fly-speed-changed: '&a飞行速度已调整为 &e{speed}'
+  
+# 调试设置
+debug:
+  # 是否启用调试模式
+  enabled: false
+  # 是否记录详细日志
+  verbose-logging: false

@@ -1,0 +1,59 @@
+name: EnhancedFly
+version: ${version}
+main: com.enhancedfly.EnhancedFly
+api-version: 1.20
+author: YourName
+description: 高级飞行插件，支持飞行商店、世界控制、经济系统、成就系统和MySQL数据库
+website: https://yourwebsite.com
+softdepend: [Vault, Essentials]
+
+commands:
+  fly:
+    description: 飞行主命令
+    usage: /fly [player] [on|off]
+    aliases: [flight]
+  flyshop:
+    description: 打开飞行商店
+    usage: /flyshop
+    aliases: [flystore, fshop]
+  flyspeed:
+    description: 调整飞行速度
+    usage: /flyspeed <1-10>
+    aliases: [fspeed]
+  flyadmin:
+    description: 飞行管理命令
+    usage: /flyadmin <reload|give|remove|stats>
+    aliases: [fadmin]
+
+permissions:
+  enhancedfly.*:
+    description: 所有权限
+    children:
+      enhancedfly.use: true
+      enhancedfly.others: true
+      enhancedfly.shop: true
+      enhancedfly.speed: true
+      enhancedfly.admin: true
+      enhancedfly.bypass.world: true
+      enhancedfly.free: true
+  enhancedfly.use:
+    description: 使用飞行能力
+    default: true
+  enhancedfly.others:
+    description: 为其他玩家切换飞行
+    default: op
+  enhancedfly.shop:
+    description: 访问飞行商店
+    default: true
+  enhancedfly.speed:
+    description: 调整飞行速度
+    default: true
+  enhancedfly.admin:
+    description: 管理员命令
+    default: op
+  enhancedfly.bypass.world:
+    description: 绕过世界飞行限制
+    default: op
+  enhancedfly.free:
+    description: 免费使用飞行（不消耗时间）
+    default: op

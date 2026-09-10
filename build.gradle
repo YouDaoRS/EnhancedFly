@@ -1,0 +1,83 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.enhancedfly'
+version = '2.1.1'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+    maven {
+        name = 'jitpack'
+        url = 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+    
+    // MySQL 和 HikariCP 依赖
+    implementation 'com.mysql:mysql-connector-j:8.0.33'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    
+    // SQLite JDBC 依赖
+    implementation 'org.xerial:sqlite-jdbc:3.44.1.0'
+    
+    // SLF4J 日志依赖
+    implementation 'org.slf4j:slf4j-api:2.0.7'
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+}
+
+configurations.testImplementation.extendsFrom(configurations.compileOnly)
+test { useJUnitPlatform() }
+
+tasks.register('verifyPluginJar', JavaExec) {
+    dependsOn testClasses, shadowJar
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.enhancedfly.PackagedSmokeCheck'
+    args tasks.shadowJar.archiveFile.get().asFile.absolutePath
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    archiveFileName.set("EnhancedFly-${version}.jar")
+    
+    // 重定位依赖以避免冲突
+    relocate 'com.mysql', 'com.enhancedfly.libs.mysql'
+    relocate 'com.zaxxer.hikari', 'com.enhancedfly.libs.hikari'
+    // Keep org.sqlite/native resource paths intact for the bundled JNI loader.
+    mergeServiceFiles()
+    relocate 'org.slf4j', 'com.enhancedfly.libs.slf4j'
+}
+
+processResources {
+    filteringCharset = 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand(
+            'version': project.version
+        )
+    }
+}
+
+build {
+    dependsOn shadowJar
+}

@@ -1,0 +1,132 @@
+EnhancedFly v2.1 快速开始指南
+===============================
+
+## 安装步骤
+
+1. 解压 EnhancedFly-v2.1-Complete.zip
+2. 使用Gradle构建插件：
+   cd <解压目录>
+   gradle clean shadowJar
+   
+3. 构建完成后，在 build/libs/ 目录找到：
+   EnhancedFly-2.1.0.jar
+   
+4. 将JAR文件复制到服务器的 plugins/ 目录
+
+5. （可选）安装Vault插件以支持经济功能
+
+6. 启动服务器，插件会自动生成配置文件
+
+## 配置建议
+
+### 数据库选择
+- 中小型服务器（<50玩家）：使用SQLite（默认已启用）
+- 大型服务器（50+玩家）：推荐MySQL
+
+### 编辑 config.yml
+```yaml
+# SQLite配置（默认）
+database:
+  sqlite:
+    enabled: true  # 保持true
+    
+# 或使用MySQL
+database:
+  mysql:
+    enabled: true  # 改为true
+    host: localhost
+    port: 3306
+    database: enhancedfly
+    username: root
+    password: your_password
+```
+
+## 基本使用
+
+### 玩家命令
+- /fly - 切换飞行模式
+- /flyshop - 打开飞行商店
+- /flyspeed <1-10> - 调整飞行速度
+
+### 管理员命令
+- /flyadmin reload - 重载配置
+- /flyadmin give <玩家> permanent - 给予永久飞行
+- /flyadmin give <玩家> 3600 - 给予1小时飞行
+- /flyadmin remove <玩家> - 移除飞行权限
+- /flyadmin stats <玩家> - 查看完整统计
+
+## 权限配置
+
+### OP玩家（自动拥有所有权限）
+无需配置
+
+### 普通玩家
+在权限插件中添加：
+- enhancedfly.use - 使用飞行
+- enhancedfly.shop - 访问商店
+- enhancedfly.speed - 调整速度
+
+### VIP玩家
+添加额外权限：
+- enhancedfly.free - 免费无限飞行
+
+## 常见问题
+
+Q: 为什么无法购买？
+A: 确保安装了Vault插件和经济插件（如Essentials）
+
+Q: 数据会丢失吗？
+A: 不会，插件支持三种持久化方式，数据会自动保存
+
+Q: 可以修改商店价格吗？
+A: 可以，编辑config.yml中shop.items下的价格
+
+Q: 如何查看玩家统计？
+A: 使用 /flyadmin stats <玩家名> 命令
+
+## 验证安装
+
+1. 启动服务器后检查控制台是否有：
+   [EnhancedFly] EnhancedFly v2.1 已成功启用！
+   
+2. 输入 /flyshop 测试商店是否打开
+
+3. 给自己添加飞行测试：
+   /flyadmin give <你的名字> 3600
+
+4. 测试Tab补全：
+   输入 /fly 然后按Tab键
+
+## 需要帮助？
+
+查看这些文件：
+- README.md - 完整说明文档
+- CHECKLIST.md - 功能检查清单  
+- 优化总结.txt - 更新内容说明
+
+## 重要提示
+
+⚠️ 首次使用建议：
+1. 先在测试服务器测试所有功能
+2. 确认数据正确保存和加载
+3. 测试购买、成就、统计等功能
+4. 然后再部署到生产服务器
+
+✅ 升级建议：
+- 如果从旧版本升级，建议备份数据
+- 清空数据库表让插件重新创建
+- 这样可以确保表结构完整
+
+---
+
+构建需求：
+- JDK 17或更高版本
+- Gradle（或使用gradlew）
+
+服务器需求：
+- Minecraft 1.20.1
+- Spigot/Paper/Purpur/Mohist
+- Java 17+
+- Vault插件（可选）
+
+祝使用愉快！
