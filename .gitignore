@@ -1,9 +1,14 @@
 ﻿.gradle/
 build/
 .idea/
+.serena/
+bin/
+out/
+target/
+.vscode/
 *.iml
 *.class
 *.jar
 *.log
 *.tmp
-original-source-2.1.0.zip
+original-source-*.zip
