@@ -113,7 +113,7 @@ public class EnhancedFly extends JavaPlugin {
         }
         
         getLogger().info("═══════════════════════════════════════");
-        getLogger().info("  EnhancedFly v2.1 已成功启用！");
+        getLogger().info("  EnhancedFly v" + getDescription().getVersion() + " 已成功启用！");
         getLogger().info("  语言: " + languageManager.getCurrentLanguage());
         getLogger().info("  数据库: " + databaseType);
         getLogger().info("  成就系统: " + (getConfig().getBoolean("achievements.enabled") ? "已启用" : "已禁用"));

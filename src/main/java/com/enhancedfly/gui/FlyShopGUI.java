@@ -281,7 +281,9 @@ public class FlyShopGUI {
         if (!plugin.getConfigManager().isShopEnabled() || !player.hasPermission("enhancedfly.shop")
                 || !plugin.getDataManager().requireReady(player.getUniqueId(), player)) return;
         UUID uuid = player.getUniqueId();
-        if (!(clickedInv.getHolder() instanceof MenuHolder holder) || !holder.owner.equals(uuid)) return;
+        if (!(clickedInv.getHolder() instanceof MenuHolder)) return;
+        MenuHolder holder = (MenuHolder) clickedInv.getHolder();
+        if (!holder.owner.equals(uuid)) return;
         int currentPage = holder.page;
         int totalPages = Math.max(1, (int) Math.ceil((double) shopItems.size() / ITEMS_PER_PAGE));
         

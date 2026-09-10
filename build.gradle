@@ -4,9 +4,9 @@ plugins {
 }
 
 group = 'com.enhancedfly'
-version = '2.1.1'
-sourceCompatibility = '17'
-targetCompatibility = '17'
+version = '2.2.0'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -25,7 +25,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT'
+    // Compile against the oldest supported API so newer-only calls cannot slip in.
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     
     // MySQL 和 HikariCP 依赖
@@ -53,8 +54,9 @@ tasks.register('verifyPluginJar', JavaExec) {
     args tasks.shadowJar.archiveFile.get().asFile.absolutePath
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.release = 11
 }
 
 shadowJar {

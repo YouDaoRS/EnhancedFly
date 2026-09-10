@@ -72,15 +72,20 @@ public class PlayerListener implements Listener {
     @EventHandler public void onDeath(PlayerDeathEvent event) { plugin.getFlyManager().release(event.getEntity(), false); }
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onFall(EntityDamageEvent event) {
-        if (event.getEntity() instanceof Player player && event.getCause() == EntityDamageEvent.DamageCause.FALL
+        if (!(event.getEntity() instanceof Player)) return;
+        Player player = (Player) event.getEntity();
+        if (event.getCause() == EntityDamageEvent.DamageCause.FALL
                 && plugin.getFlyManager().protectFall(player)) event.setCancelled(true);
     }
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
         Inventory inventory = event.getView().getTopInventory();
-        if (!(inventory.getHolder() instanceof MenuHolder holder)) return;
+        if (!(inventory.getHolder() instanceof MenuHolder)) return;
+        MenuHolder holder = (MenuHolder) inventory.getHolder();
         event.setCancelled(true);
-        if (!(event.getWhoClicked() instanceof Player player) || !holder.owner.equals(player.getUniqueId())) return;
+        if (!(event.getWhoClicked() instanceof Player)) return;
+        Player player = (Player) event.getWhoClicked();
+        if (!holder.owner.equals(player.getUniqueId())) return;
         int slot = event.getRawSlot();
         if (slot < 0 || slot >= inventory.getSize() || holder.pendingClick || !event.isLeftClick() || event.isShiftClick()) return;
         if (event.getCurrentItem() == null || event.getCurrentItem().getType().isAir()) return;

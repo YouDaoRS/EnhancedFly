@@ -1,4 +1,28 @@
-# EnhancedFly 2.1.1 修复说明
+# EnhancedFly 更新日志
+
+## 2.2.0
+
+### 跨版本支持
+
+- 支持范围扩展为 Minecraft 1.16.5–1.21.x，面向 Spigot、Paper、Purpur 及其他兼容 Bukkit/Spigot API 的服务端。
+- 最低编译基线调整为 Spigot API 1.16.5，`plugin.yml` 使用 `api-version: '1.16'`。
+- 服务端运行字节码目标调整为 Java 11；同一 JAR 可运行在 Java 11、17、21 等更高版本 JVM 上。
+- 移除主程序中的 Java 16 模式匹配语法，不引入 NMS、CraftBukkit 或特定服务端私有 API。
+- 启用日志使用构建版本号，不再显示硬编码的旧版本。
+
+### 验证
+
+- 20 项自动化测试全部通过。
+- `verifyPluginJar` 检查成品中的 API 基线和 Java 11 字节码兼容性。
+- MySQL Driver、HikariCP、SQLite Driver 和 SQLite 实际读写打包检查通过。
+- 已在 Paper 1.16.5、Paper 1.20.1、Paper 1.21.11 和 Purpur 1.21.11 上完成无玩家启动、插件启用、SQLite 初始化与正常停服验证。
+- 玩家余额、计费、购买、恢复快照和停服保存逻辑没有改变。
+
+### 实际边界
+
+最低编译基线和启动验证不能代替真实玩家集成测试。仍需在实际服务器插件组合中验证飞行、Vault 商店、权限和真实 MySQL 行为。
+
+## 2.1.1
 
 本次以当前源码为依据进行了修复。旧审查仅用作线索，没有将推测直接当成漏洞。项目现已纳入 Git 版本管理，旧源码可从初始发布前的本地历史或 GitHub 版本记录追踪。
 

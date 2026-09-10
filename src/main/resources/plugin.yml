@@ -1,10 +1,10 @@
 name: EnhancedFly
 version: ${version}
 main: com.enhancedfly.EnhancedFly
-api-version: 1.20
-author: YourName
-description: 高级飞行插件，支持飞行商店、世界控制、经济系统、成就系统和MySQL数据库
-website: https://yourwebsite.com
+api-version: '1.16'
+author: YouDaoRS
+description: 跨版本飞行插件，支持飞行商店、世界控制、经济系统、成就系统和MySQL数据库
+website: https://github.com/YouDaoRS/EnhancedFly
 softdepend: [Vault, Essentials]
 
 commands:

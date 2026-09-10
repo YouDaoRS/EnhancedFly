@@ -175,7 +175,9 @@ public class AchievementGUI {
 
     public void handleClick(Player player, int slot, Inventory clickedInv) {
         UUID uuid = player.getUniqueId();
-        if (!(clickedInv.getHolder() instanceof MenuHolder holder) || !holder.owner.equals(uuid)) return;
+        if (!(clickedInv.getHolder() instanceof MenuHolder)) return;
+        MenuHolder holder = (MenuHolder) clickedInv.getHolder();
+        if (!holder.owner.equals(uuid)) return;
         int currentPage = holder.page;
         List<Achievement> achievements = plugin.getAchievementManager().getAllAchievements();
         int totalPages = Math.max(1, (int) Math.ceil((double) achievements.size() / ITEMS_PER_PAGE));
